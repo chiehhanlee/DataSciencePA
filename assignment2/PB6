@@ -1,0 +1,3 @@
+SELECT COUNT(*)
+FROM Frequency AS a, Frequency As b
+WHERE a.term='transactions' AND  b.term='world' AND a.docid=b.docid;

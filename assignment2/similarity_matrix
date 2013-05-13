@@ -1,0 +1,9 @@
+
+SELECT row , col, SUM(val)
+FROM
+(SELECT a.docid AS row, b.docid AS col , a.count*b.count AS val
+FROM Frequency as A , Frequency as B
+WHERE a.term = b.term AND a.docid='10080_txt_crude' AND b.docid='17035_txt_earn')
+GROUP BY row , col
+
+;
