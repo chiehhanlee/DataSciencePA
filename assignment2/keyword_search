@@ -1,0 +1,20 @@
+
+
+SELECT row , col, SUM(val)
+FROM
+(SELECT a.docid AS row, b.docid AS col , a.count*b.count AS val
+FROM Frequency as A ,
+
+(SELECT * FROM frequency as q
+UNION
+SELECT 'q' as docid, 'washington' as term, 1 as count 
+UNION
+SELECT 'q' as docid, 'taxes' as term, 1 as count
+UNION 
+SELECT 'q' as docid, 'treasury' as term, 1 as count) as B
+
+WHERE a.term = b.term  AND b.docid='q')
+GROUP BY row , col
+ORDER BY SUM(val)
+
+;
